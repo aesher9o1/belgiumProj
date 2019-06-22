@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:async';
+import 'package:flutter_adaptive_cards/flutter_adaptive_cards.dart';
 
 class CartPage extends StatelessWidget {
   String bagId;
@@ -25,8 +26,30 @@ class CartPage extends StatelessWidget {
                       fontWeight: FontWeight.w700)),
             ),
             Expanded(
-              child: Container(
-                child: Text("something"),
+              child: Center(
+                child: Card(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const ListTile(
+                        leading: Icon(Icons.album),
+                        title: Text('The name of the item'),
+                        subtitle: Text("The price:"),
+                        trailing: Text("Quantity"),
+                      ),
+                      ButtonTheme.bar( // make buttons use the appropriate styles for cards
+                        child: ButtonBar(
+                          children: <Widget>[
+                            FlatButton(
+                              child: const Text('Delete Item', style: TextStyle(color: Colors.redAccent),),
+                              onPressed: () { /* ... */ },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             Column(
