@@ -23,6 +23,12 @@ class _ItemState extends State<Item> {
     });
   }
 
+  void deleteItem(index) {
+    setState(() {
+      this._product.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,7 +56,9 @@ class _ItemState extends State<Item> {
                             'Delete Item',
                             style: TextStyle(color: Colors.redAccent),
                           ),
-                          onPressed: () {/* ... */},
+                          onPressed: () {
+                            deleteItem(position);
+                          },
                         ),
                       ],
                     ),
