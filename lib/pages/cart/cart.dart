@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:barcode_scan/barcode_scan.dart';
 import 'dart:async';
+
+import 'package:flutter/services.dart';
 
 class CartPage extends StatelessWidget {
   String bagId;
@@ -33,7 +35,7 @@ class CartPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 FlatButton(
-                  onPressed: ()=>{},
+                  onPressed: scan,
                   color: Colors.black,
                   padding: EdgeInsets.all(10),
                   child: Row(
@@ -64,13 +66,13 @@ class CartPage extends StatelessWidget {
 }
 
 
-//   Future scan() async{
-//    String result;
-//     try {
+  Future scan() async{
+   String result;
+    try {
      
-//       result= await FlutterBarcodeScanner.scanBarcode("#010101","Cancel",false);
+      result= await BarcodeScanner.scan();
       
-//     } on PlatformException {
-//       result = 'Process Failed!';
-//     }
-// }
+    } on PlatformException {
+      result = 'Process Failed!';
+    }
+}
