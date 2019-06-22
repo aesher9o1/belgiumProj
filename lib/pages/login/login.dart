@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:qr_utils/qr_utils.dart';
+import 'dart:async';
+
 
 class LoginPage extends StatelessWidget {
   @override
@@ -10,13 +14,16 @@ class LoginPage extends StatelessWidget {
             image: new AssetImage("login.jpg"), fit: BoxFit.fill),
       )),
       Center(
-        child: Container(
+        child:
+          Padding(
+            padding: EdgeInsets.all(29),
+            child: Container(
             height: 200,
             child: Card(
                 child: Container(
               padding: EdgeInsets.all(18),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text(
                     "Login",
@@ -27,15 +34,35 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 7),
-                    child: Text(
-                      "Have an existing bag code?",
-                      style: new TextStyle(fontFamily: 'Nunito'),
+                    child: RaisedButton(
+                      elevation: 4,
+                      color: Colors.black,
+                      textColor: Colors.white,
+                      splashColor: Colors.blueGrey,
+                      onPressed: scan,
+                      child: Text('Begin Shopping', style : new TextStyle(
+                        fontFamily: 'Nunito',
+
+                      ),),
                     ),
                   )
                 ],
               ),
             ))),
+          )
+         ,
       ),
     ]);
   }
+}
+
+
+Future scan() async{
+   String result;
+    try {
+      result = await QrUtils.scanQR;
+      print(result);
+    } on PlatformException {
+      result = 'Process Failed!';
+    }
 }
