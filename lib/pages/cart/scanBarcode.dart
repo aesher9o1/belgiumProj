@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:belgium/constant/cart_item.dart';
+import 'package:belgium/constant/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'dart:async';
@@ -43,6 +47,14 @@ class ScanBarcode extends StatelessWidget {
     String result;
     try {
       result = await BarcodeScanner.scan();
+      result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
+      print(jsonDecode(Menu().returnMenu()));
+      if (jsonDecode(Menu().returnMenu())['result']) {
+        this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
+      } else {
+        
+      }
+
       this.statechanger(result);
     } on PlatformException {
       result = 'Process Failed!';

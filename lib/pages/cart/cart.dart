@@ -1,3 +1,4 @@
+import 'package:belgium/constant/cart_item.dart';
 import 'package:belgium/pages/cart/items.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class CartPage extends StatelessWidget {
                       fontSize: 21,
                       fontWeight: FontWeight.w700)),
             ),
-            Expanded(child: Item("StartShopping"))
+            Expanded(child: Item(CartItem("Begin Shopping", "000000", "23", 0)))
           ],
         ),
       )),

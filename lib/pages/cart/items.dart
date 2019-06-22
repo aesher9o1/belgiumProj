@@ -1,15 +1,16 @@
+import 'package:belgium/constant/cart_item.dart';
 import 'package:belgium/pages/cart/scanBarcode.dart';
 import 'package:flutter/material.dart';
 
 class Item extends StatefulWidget {
-  String initItem;
+  CartItem initItem;
   Item(this.initItem);
 
   _ItemState createState() => new _ItemState();
 }
 
 class _ItemState extends State<Item> {
-  List<String> _product = [];
+  List<CartItem> _product = [];
 
   @override
   void initState() {
@@ -23,6 +24,10 @@ class _ItemState extends State<Item> {
     });
   }
 
+
+  String getName(position){
+    return this._product[position].name;
+  }
   void deleteItem(index) {
     setState(() {
       this._product.removeAt(index);
@@ -37,13 +42,13 @@ class _ItemState extends State<Item> {
             child: ListView.builder(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          itemBuilder: (context, position) {
+          itemBuilder: (context, int position) {
             return Card(
               child: Column(
                 children: <Widget>[
                   const ListTile(
                     leading: Icon(Icons.album),
-                    title: Text('The name of the item'),
+                    title: Text("Add product"),
                     subtitle: Text("The price:"),
                     trailing: Text("Quantity"),
                   ),
