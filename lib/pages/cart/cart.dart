@@ -24,7 +24,7 @@ class CartPage extends StatelessWidget {
                       fontSize: 21,
                       fontWeight: FontWeight.w700)),
             ),
-            Item("StartShopping")
+            Expanded(child: Item("StartShopping"))
           ],
         ),
       )),

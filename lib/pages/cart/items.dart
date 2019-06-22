@@ -27,7 +27,8 @@ class _ItemState extends State<Item> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        ListView.builder(
+        Expanded(
+            child: ListView.builder(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, position) {
@@ -59,13 +60,11 @@ class _ItemState extends State<Item> {
             );
           },
           itemCount: _product.length,
-        ),
+        )),
         Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[ScanBarcode(stateUpdate)],
-        )
+        ),
       ],
     );
   }
