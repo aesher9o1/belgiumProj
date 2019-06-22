@@ -1,3 +1,4 @@
+import 'package:belgium/pages/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_utils/qr_utils.dart';
@@ -5,8 +6,11 @@ import 'dart:async';
 
 
 class LoginPage extends StatelessWidget {
+
+  var gcontext;
   @override
   Widget build(BuildContext context) {
+    this.gcontext = context;
     return Stack(children: <Widget>[
       Container(
           decoration: new BoxDecoration(
@@ -54,15 +58,16 @@ class LoginPage extends StatelessWidget {
       ),
     ]);
   }
-}
-
-
-Future scan() async{
+  Future scan() async{
    String result;
     try {
       result = await QrUtils.scanQR;
-      print(result);
+      //wierd error shows http://
+      Navigator.push(gcontext, MaterialPageRoute(builder: (context)=>CartPage(result.toString().split("http://")[1]) ));
     } on PlatformException {
       result = 'Process Failed!';
     }
 }
+}
+
+
