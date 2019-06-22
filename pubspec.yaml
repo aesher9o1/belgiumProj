@@ -24,13 +24,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   qr_utils: ^0.1.4
-<<<<<<< HEAD
   flutter_adaptive_cards:
     git:
       url: https://github.com/neohelden/Flutter-AdaptiveCards
-=======
+
   barcode_scan : 0.0.8
->>>>>>> 571b612867ddebd7eb04bacfa982ea75ac284a9d
+
   
 
   
