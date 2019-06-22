@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
     try {
       result = await QrUtils.scanQR;
       //wierd error shows http://
-      Navigator.push(gcontext, MaterialPageRoute(builder: (context)=>CartPage(result.toString().split("http://")[1]) ));
+      Navigator.push(gcontext, MaterialPageRoute(builder: (context)=>CartPage(result) ));
     } on PlatformException {
       result = 'Process Failed!';
     }
