@@ -25,8 +25,6 @@ class _ItemState extends State<Item> {
     });
   }
 
-
-
   void deleteItem(index) {
     setState(() {
       this._product.removeAt(index);
@@ -42,7 +40,7 @@ class _ItemState extends State<Item> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, int position) {
-            return ProductCard(_product[position]);
+            return ProductCard(_product[position], this.deleteItem, position);
           },
           itemCount: _product.length,
         )),

@@ -2,9 +2,10 @@ import 'package:belgium/constant/cart_item.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  CartItem product;
-
-  ProductCard(this.product);
+  final CartItem product;
+  final deleteItem;
+  int position;
+  ProductCard(this.product, this.deleteItem, this.position);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class ProductCard extends StatelessWidget {
         children: <Widget>[
           ListTile(
               leading: Icon(Icons.album),
-              title: Text(this.product.barcode),
+              title: Text(this.product.name),
               subtitle: Text(this.product.price),
               trailing: Text(this.product.quantity.toString())),
           ButtonTheme.bar(
@@ -26,7 +27,7 @@ class ProductCard extends StatelessWidget {
                     style: TextStyle(color: Colors.redAccent),
                   ),
                   onPressed: () {
-                    // deleteItem(position);
+                    this.deleteItem(position);
                   },
                 ),
               ],
