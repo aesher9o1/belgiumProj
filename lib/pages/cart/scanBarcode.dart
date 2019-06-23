@@ -52,7 +52,7 @@ class ScanBarcode extends StatelessWidget {
       if (jsonDecode(Menu().returnMenu())['result']) {
         this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
       } else {
-        
+        this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
       }
 
       this.statechanger(result);
