@@ -47,15 +47,16 @@ class ScanBarcode extends StatelessWidget {
     String result;
     try {
       result = await BarcodeScanner.scan();
-      result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
-      print(jsonDecode(Menu().returnMenu()));
-      if (jsonDecode(Menu().returnMenu())['result']) {
-        this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
-      } else {
-        this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
-      }
+      this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
+      // result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
+      // print(jsonDecode(Menu().returnMenu()));
+      // if (jsonDecode(Menu().returnMenu())['result']) {
+      //   this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
+      // } else {
+      //   this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
+      // }
 
-      this.statechanger(result);
+      // this.statechanger(result);
     } on PlatformException {
       result = 'Process Failed!';
     }

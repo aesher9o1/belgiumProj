@@ -3,4 +3,5 @@ class CartItem {
   int quantity;
 
   CartItem(this.name, this.barcode, this.price, this.quantity);
+
 }
