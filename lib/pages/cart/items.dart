@@ -11,7 +11,7 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
-  final List<CartItem> _product =<CartItem>[];
+  final List<CartItem> _product = <CartItem>[];
 
   @override
   void initState() {
@@ -31,6 +31,26 @@ class _ItemState extends State<Item> {
     });
   }
 
+  void quantityMoify(int position, int mode) {
+    switch (mode) {
+      case 1:
+        setState(() {
+          ++this._product[position].quantity;
+          if(this._product[position].quantity==0)
+              deleteItem(position);
+            
+        });
+        break;
+      case 0:
+        setState(() {
+          --this._product[position].quantity;
+           if(this._product[position].quantity==0)
+              deleteItem(position);
+        });
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +60,7 @@ class _ItemState extends State<Item> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, int position) {
-            return ProductCard(_product[position], this.deleteItem, position);
+            return ProductCard(_product[position], this.deleteItem, position, this.quantityMoify);
           },
           itemCount: _product.length,
         )),
