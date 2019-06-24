@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'dart:async';
 
-
 import 'package:flutter/services.dart';
 
 class ScanBarcode extends StatelessWidget {
@@ -49,10 +48,14 @@ class ScanBarcode extends StatelessWidget {
     try {
       result = await BarcodeScanner.scan();
       Menu menu = new Menu();
-      var dict = menu.menu;
-      Map<String, dynamic> finalMenu = jsonDecode(dict.toString());
+      Map<String, dynamic> finalMenu = menu.menu;
+      result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
 
-      this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
+      if (finalMenu.containsKey(result))
+        this.statechanger(CartItem(
+            finalMenu[result]['name'], finalMenu[result]['barcode'], result, 0));
+
+      // this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
       // result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
       // print(jsonDecode(Menu().returnMenu()));
       // if (jsonDecode(Menu().returnMenu())['result']) {
