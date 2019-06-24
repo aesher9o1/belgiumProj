@@ -10,6 +10,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: new Scaffold(
           body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -25,7 +26,7 @@ class CartPage extends StatelessWidget {
                       fontSize: 21,
                       fontWeight: FontWeight.w700)),
             ),
-            Expanded(child: Item(CartItem("Begin Shopping", "000000", "23", 0)))
+            Expanded(child: Item(null))
           ],
         ),
       )),

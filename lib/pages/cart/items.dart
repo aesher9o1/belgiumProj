@@ -15,7 +15,8 @@ class _ItemState extends State<Item> {
 
   @override
   void initState() {
-    this._product.add(widget.initItem);
+    if(widget.initItem!=null)
+      this._product.add(widget.initItem);
     super.initState();
   }
 
