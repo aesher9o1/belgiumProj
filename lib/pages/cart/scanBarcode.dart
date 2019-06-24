@@ -47,6 +47,11 @@ class ScanBarcode extends StatelessWidget {
     String result;
     try {
       result = await BarcodeScanner.scan();
+      Menu menu = new Menu();
+      var dict = menu.returnMenu();
+      var _list = dict.values.toList();
+      
+
       this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
       // result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
       // print(jsonDecode(Menu().returnMenu()));
