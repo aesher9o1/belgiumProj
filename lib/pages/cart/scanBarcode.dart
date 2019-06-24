@@ -53,7 +53,7 @@ class ScanBarcode extends StatelessWidget {
 
       if (finalMenu.containsKey(result))
         this.statechanger(CartItem(
-            finalMenu[result]['name'], result, finalMenu[result]['price'], 0));
+            finalMenu[result]['name'], result, finalMenu[result]['price'], 1));
 
       // this.statechanger(CartItem("Begin Shopping", "000000", "23", 0));
       // result = result.replaceAll(new RegExp(r"\s+\b|\b\s"), '');
