@@ -66,6 +66,30 @@ class _ItemState extends State<Item> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[ScanBarcode(stateUpdate)],
         ),
+        FlatButton(
+          color: Colors.green,
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: null,
+              ),
+              Text(
+                "Checkout",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700),
+              )
+            ],
+          ),
+        )
       ],
     );
   }
