@@ -16,30 +16,64 @@ class ScanBarcode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return FlatButton(
-      onPressed: scan,
-      color: Colors.black,
-      padding: EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-            Icons.shopping_cart,
-            color: Colors.white,
+    return Row(
+      children: <Widget>[
+        Expanded(
+          
+          child: FlatButton(
+            onPressed: scan,
+            color: Colors.black,
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 5, right: 5),
+                  child: null,
+                ),
+                Text(
+                  "Add item ",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w700),
+                )
+              ],
+            ),
           ),
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            child: null,
+        ),
+        Expanded(
+          child: FlatButton(
+            onPressed: ()=>{},
+            color: Colors.greenAccent,
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 5, right: 5),
+                  child: null,
+                ),
+                Text(
+                  "Checkout ",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w700),
+                )
+              ],
+            ),
           ),
-          Text(
-            "Add new item to the cart",
-            style: TextStyle(
-                color: Colors.white,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 

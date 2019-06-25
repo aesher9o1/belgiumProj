@@ -15,8 +15,7 @@ class _ItemState extends State<Item> {
 
   @override
   void initState() {
-    if(widget.initItem!=null)
-      this._product.add(widget.initItem);
+    if (widget.initItem != null) this._product.add(widget.initItem);
     super.initState();
   }
 
@@ -37,16 +36,13 @@ class _ItemState extends State<Item> {
       case 1:
         setState(() {
           ++this._product[position].quantity;
-          if(this._product[position].quantity==0)
-              deleteItem(position);
-            
+          if (this._product[position].quantity == 0) deleteItem(position);
         });
         break;
       case 0:
         setState(() {
           --this._product[position].quantity;
-           if(this._product[position].quantity==0)
-              deleteItem(position);
+          if (this._product[position].quantity == 0) deleteItem(position);
         });
         break;
     }
@@ -61,7 +57,8 @@ class _ItemState extends State<Item> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemBuilder: (context, int position) {
-            return ProductCard(_product[position], this.deleteItem, position, this.quantityMoify);
+            return ProductCard(_product[position], this.deleteItem, position,
+                this.quantityMoify);
           },
           itemCount: _product.length,
         )),

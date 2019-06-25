@@ -19,27 +19,41 @@ class CartPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 15),
-              child: Text("Welcome " + bagId + "\t\t Amount available - " + amount(bagId).toString(),
-                  style: TextStyle(
-                      color: Colors.black,
+                margin: EdgeInsets.only(top: 15),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "Welcome " + bagId,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Nunito',
+                          fontSize: 21,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Expanded(
+                      child: Text(''),
+                    ),
+                    
+                    Text("Amount available - "+amount(bagId).toString(),style: TextStyle(
+                      color: Colors.blueAccent,
                       fontFamily: 'Nunito',
-                      fontSize: 21,
-                      fontWeight: FontWeight.w700)),
-            ),
-            Expanded(child: Item(null) ),
-
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700
+                    ),)
+                  ],
+                ),
+                ),
+            Expanded(child: Item(null)),
           ],
         ),
       )),
     );
   }
 
-  double amount(String bagId){
-    if(bagId == "Bag 01"){
+  double amount(String bagId) {
+    if (bagId == "Bag 01") {
       return amount1;
-    }
-    else{
+    } else {
       return amount2;
     }
   }
