@@ -173,6 +173,26 @@ class _BillPageState extends State<BillPage> {
           ],
         )
         );
+        widlist.add(Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("Balance Left", style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Nunito',
+                fontSize: 13,
+                fontWeight: FontWeight.w400
+            )
+            ),
+            Text((available - widget.billAmount).toString(),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Nunito',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400
+                ))
+          ],
+        )
+        );
         return widlist;
       }
       else{
