@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_utils/qr_utils.dart';
 import 'dart:async';
+import 'package:toast/toast.dart';
+
 
 
 class LoginPage extends StatelessWidget {
@@ -65,11 +67,19 @@ class LoginPage extends StatelessWidget {
     try {
       result = await QrUtils.scanQR;
       //wierd error shows http://
+      if(result == "Bag 01" || result == "Bag 02")
       Navigator.push(gcontext, MaterialPageRoute(builder: (context)=>CartPage(result) ));
+      else
+        showToast("Invalid QR Code", duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+
     } on PlatformException {
       result = 'Process Failed!';
     }
 }
+
+  void showToast(String msg, {int duration, int gravity}) {
+    Toast.show(msg, gcontext, duration: duration, gravity: gravity);
+  }
 }
 
 

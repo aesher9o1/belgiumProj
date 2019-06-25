@@ -29,6 +29,7 @@ dependencies:
       url: https://github.com/neohelden/Flutter-AdaptiveCards
 
   barcode_scan : 0.0.8
+  toast: ^0.1.4
 
   
 

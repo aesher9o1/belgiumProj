@@ -26,24 +26,6 @@ class ProductCard extends StatelessWidget {
               children: <Widget>[
                 FlatButton(
                   child: Text(
-                    'Add',
-                    style: TextStyle(color: Colors.greenAccent),
-                  ),
-                  onPressed: () {
-                    this.modifyItem(position, 1);
-                  },
-                ),
-                FlatButton(
-                  child: Text(
-                    'Substract',
-                    style: TextStyle(color: Colors.redAccent),
-                  ),
-                  onPressed: () {
-                    this.modifyItem(position, 0);
-                  },
-                ),
-                FlatButton(
-                  child: Text(
                     'Delete Item',
                     style: TextStyle(color: Colors.redAccent),
                   ),
