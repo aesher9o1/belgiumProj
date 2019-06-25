@@ -13,16 +13,17 @@ import 'package:path/path.dart';
 class ScanBarcode extends StatelessWidget {
   var statechanger;
   final List<CartItem> _product = <CartItem>[];
+  var gcontext;
 
   ScanBarcode(this.statechanger, _product);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    this.gcontext = this;
+
     return Row(
       children: <Widget>[
         Expanded(
-          
           child: FlatButton(
             onPressed: scan,
             color: Colors.black,
@@ -51,7 +52,7 @@ class ScanBarcode extends StatelessWidget {
         ),
         Expanded(
           child: FlatButton(
-            onPressed: ()=>{},
+            onPressed: checkout,
             color: Colors.greenAccent,
             padding: EdgeInsets.all(10),
             child: Row(
@@ -106,13 +107,16 @@ class ScanBarcode extends StatelessWidget {
       result = 'Process Failed!';
     }
   }
-  void checkout(){
+
+  void checkout() {
     double billAmount = 0.0;
     var len = _product.length;
-    for(var i = 0; i < len; i++){
+    for (var i = 0; i < len; i++) 
       billAmount += double.parse(_product[i].price);
-    }
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>BillPage(_product, billAmount) ));
-
+    
+    Navigator.push(
+        gcontext,
+        MaterialPageRoute(
+            builder: (context) => BillPage(_product, billAmount)));
   }
 }
