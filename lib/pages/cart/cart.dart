@@ -7,6 +7,7 @@ class CartPage extends StatelessWidget {
   List<String> _product = [];
   double amount1 = 50.0;
   double amount2 = 10.0;
+  double finalAmount;
   CartPage(String this.bagId);
   @override
   Widget build(BuildContext context) {
@@ -52,9 +53,10 @@ class CartPage extends StatelessWidget {
 
   double amount(String bagId) {
     if (bagId == "Bag 01") {
-      return amount1;
+      finalAmount =  amount1;
     } else {
-      return amount2;
+      finalAmount =  amount2;
     }
+    return finalAmount;
   }
 }

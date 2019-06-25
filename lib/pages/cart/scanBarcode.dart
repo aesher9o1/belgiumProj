@@ -2,16 +2,19 @@ import 'dart:convert';
 
 import 'package:belgium/constant/cart_item.dart';
 import 'package:belgium/constant/menu.dart';
+import 'package:belgium/pages/bill/billing.dart';
 import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 
 class ScanBarcode extends StatelessWidget {
   var statechanger;
+  final List<CartItem> _product = <CartItem>[];
 
-  ScanBarcode(this.statechanger);
+  ScanBarcode(this.statechanger, _product);
 
   @override
   Widget build(BuildContext context) {
@@ -102,5 +105,14 @@ class ScanBarcode extends StatelessWidget {
     } on PlatformException {
       result = 'Process Failed!';
     }
+  }
+  void checkout(){
+    double billAmount = 0.0;
+    var len = _product.length;
+    for(var i = 0; i < len; i++){
+      billAmount += double.parse(_product[i].price);
+    }
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>BillPage(_product, billAmount) ));
+
   }
 }

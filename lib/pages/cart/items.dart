@@ -12,7 +12,6 @@ class Item extends StatefulWidget {
 
 class _ItemState extends State<Item> {
   final List<CartItem> _product = <CartItem>[];
-
   @override
   void initState() {
     if (widget.initItem != null) this._product.add(widget.initItem);
@@ -28,6 +27,7 @@ class _ItemState extends State<Item> {
   void deleteItem(index) {
     setState(() {
       this._product.removeAt(index);
+
     });
   }
 
@@ -64,7 +64,7 @@ class _ItemState extends State<Item> {
         )),
         Column(
           mainAxisSize: MainAxisSize.max,
-          children: <Widget>[ScanBarcode(stateUpdate)],
+          children: <Widget>[ScanBarcode(stateUpdate, _product)],
         ),
       ],
     );
