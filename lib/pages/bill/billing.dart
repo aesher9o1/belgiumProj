@@ -107,7 +107,7 @@ class _BillPageState extends State<BillPage> {
   }
 
   List<Widget> transaction(){
-      if(widget.billAmount < available) {
+      if(widget.billAmount <= available) {
         List<Widget> widlist = new List<Widget>();
         widlist.add(
             Row(
@@ -208,11 +208,33 @@ class _BillPageState extends State<BillPage> {
                         fontFamily: 'Nunito',
                         fontSize: 16,
                         fontWeight: FontWeight.w500
-                    ))
+                    )
+                ),
+
+
+              ],
+            )
+        );
+        widlist.add(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                Text("Add atleast - " + (widget.billAmount - available).toString(),
+                    style: TextStyle(
+                        color: Colors.redAccent,
+                        fontFamily: 'Nunito',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500
+                    )
+                )
+
+
               ],
             )
         );
 
+return widlist;
       }
   }
 
