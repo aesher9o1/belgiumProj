@@ -2,16 +2,32 @@ import 'package:belgium/constant/cart_item.dart';
 import 'package:belgium/pages/cart/cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:toast/toast.dart';
 
-class BillPage extends StatelessWidget{
-  final List<CartItem> _product = <CartItem>[];
+class BillPage extends StatefulWidget{
+  final List<CartItem> _product;
   double billAmount;
+
+  BillPage(this._product, this.billAmount);
+
+  @override
+  _BillPageState createState() => _BillPageState();
+}
+
+class _BillPageState extends State<BillPage> {
   double uniHeight;
+
   double uniWidth;
+
   double available = CartPage.finalAmount;
 
-  BillPage(_product, billAmount);
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget._product);
+  }
   @override
   Widget build(BuildContext context) {
     var uniHeight = MediaQuery.of(context).size.height;
@@ -59,9 +75,12 @@ class BillPage extends StatelessWidget{
                         spreadRadius: 3.0,
                         blurRadius: 3.0)
                   ]),
-                  child: Column(
+                  child: Padding(
+                    padding: EdgeInsets.all(uniWidth/7),
+                    child: Column(
                     children: transaction(),
                   ),
+                )
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: uniHeight / 20)),
@@ -69,13 +88,16 @@ class BillPage extends StatelessWidget{
               Padding(
                 padding:
                 EdgeInsets.only(left: uniWidth / 10, right: uniWidth / 20),
-                child: Text(
-                  "Take Screenshot of this receipt and show it at the counter!",
+                child: GestureDetector(
+                  onTap: something,
+                    child: Text(
+                  "",
                   style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.w700,
                       fontSize: uniWidth / 20),
-                ),
+                )
+              ),
               )
             ],
           ),
@@ -85,31 +107,96 @@ class BillPage extends StatelessWidget{
   }
 
   List<Widget> transaction(){
-      List<Widget> widlist = new List<Widget>();
-      for(var i =0; i < _product.length; i++){
-        widlist.add(Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-          Text(_product[i].name, style: TextStyle(
-              color: Colors.black54,
-              fontFamily: 'Nunito',
-              fontSize: 13,
-              fontWeight: FontWeight.w400
-          )
-          ),
-          Text(_product[i].price,
-             style: TextStyle(
+      if(widget.billAmount < available) {
+        List<Widget> widlist = new List<Widget>();
+        widlist.add(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Item", style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Nunito',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400
+                )
+                ),
+                Text("Price",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Nunito',
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400
+                    ))
+              ],
+            )
+        );
+        for (var i = 0; i < widget._product.length; i++) {
+          widlist.add(Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(widget._product[i].name, style: TextStyle(
                   color: Colors.black54,
                   fontFamily: 'Nunito',
                   fontSize: 13,
                   fontWeight: FontWeight.w400
-              ))
-        ],));
+              )
+              ),
+              Text(widget._product[i].price,
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontFamily: 'Nunito',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400
+                  ))
+            ],
+          )
+          );
+
+        }
+        widlist.add(Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text("Total", style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Nunito',
+                fontSize: 13,
+                fontWeight: FontWeight.w400
+            )
+            ),
+            Text(widget.billAmount.toString(),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Nunito',
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400
+                ))
+          ],
+        )
+        );
+        return widlist;
+      }
+      else{
+        List<Widget> widlist = new List<Widget>();
+        widlist.add(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                Text("Transaction Falied",
+                    style: TextStyle(
+                        color: Colors.redAccent,
+                        fontFamily: 'Nunito',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500
+                    ))
+              ],
+            )
+        );
 
       }
-      return widlist;
-   
   }
 
-
+  void something(){
+    print(widget._product);
+  }
 }

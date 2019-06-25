@@ -6,7 +6,7 @@ class CartPage extends StatelessWidget {
   String bagId;
   List<String> _product = [];
   double amount1 = 50.0;
-  double amount2 = 10.0;
+  double amount2 = 1.0;
   static double finalAmount;
   CartPage(String this.bagId);
   @override

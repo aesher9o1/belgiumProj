@@ -12,10 +12,10 @@ import 'package:path/path.dart';
 
 class ScanBarcode extends StatelessWidget {
   var statechanger;
-  final List<CartItem> _product = <CartItem>[];
+  final List<CartItem> _product;
   var gcontext;
 
-  ScanBarcode(this.statechanger, _product);
+  ScanBarcode(this.statechanger, this._product);
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +113,8 @@ class ScanBarcode extends StatelessWidget {
     var len = _product.length;
     for (var i = 0; i < len; i++) 
       billAmount += double.parse(_product[i].price);
+    print(billAmount);
+    print(_product);
     
     Navigator.push(
         gcontext,
