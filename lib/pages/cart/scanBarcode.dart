@@ -19,7 +19,7 @@ class ScanBarcode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    this.gcontext = this;
+    this.gcontext = context;
 
     return Row(
       children: <Widget>[
